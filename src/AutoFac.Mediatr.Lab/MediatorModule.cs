@@ -18,7 +18,7 @@ namespace AutoFac.Mediatr.Lab
                 .AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(GenericQuery<>)).As(typeof(IRequest<>));
-            //builder.RegisterGeneric(typeof(GenericQueryRequestHandler<>)).As(typeof(IRequestHandler<,>));
+            builder.RegisterGeneric(typeof(GenericQueryRequestHandler<>)).As(typeof(IRequestHandler<,>));
             builder.RegisterGeneric(typeof(GenericQueryHandler<>)).As(typeof(IAsyncRequestHandler<,>));
 
             builder.Register<SingleInstanceFactory>(ctx =>

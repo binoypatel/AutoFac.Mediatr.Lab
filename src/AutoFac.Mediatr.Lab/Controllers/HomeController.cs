@@ -1,5 +1,6 @@
 ﻿using AutoFac.Mediatr.Core;
 using AutoFac.Mediatr.Core.Query;
+using AutoFac.Mediatr.Core.ViewModel;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -32,6 +33,17 @@ namespace AutoFac.Mediatr.Lab.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult Index(TenantViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+            return Content("Succeeded");
         }
 
         public async Task<IActionResult> Index()
